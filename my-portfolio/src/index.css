@@ -1,0 +1,20 @@
+@import "tailwindcss";
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: "Manrope", sans-serif;
+  background-color: white;
+  color: #1a1a1a;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.font-headline {
+  font-family: "Plus Jakarta Sans", sans-serif;
+}
