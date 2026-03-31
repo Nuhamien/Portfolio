@@ -9,7 +9,7 @@ export const experienceData = [
   },
   {
     id: 2,
-    company: "Sugee Pvt Limited, Mumbai",
+    company: "Pitron Tech Solutions",
     period: "Sep 2020 - July 2023",
     role: "UI/UX Designer",
     description:

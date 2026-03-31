@@ -1,44 +1,37 @@
-function CTASection() {
+function TestimonialCard({ name, role, rating, image, text }) {
   return (
-    <section className="px-6 py-28 md:px-8">
-      <div className="mx-auto max-w-4xl text-center">
-        <h2 className="font-headline mb-12 text-4xl font-extrabold md:text-5xl">
-          Have an Awesome Project
-          <br />
-          Idea? <span className="text-[#ff7a30]">Let's Discuss</span>
-        </h2>
-
-        <div className="relative mx-auto mb-8 flex max-w-2xl items-center rounded-full bg-zinc-100 p-2">
-          <span className="px-6 text-orange-500">✉</span>
-          <input
-            type="email"
-            placeholder="Enter Email Address"
-            className="flex-grow border-none bg-transparent font-medium text-zinc-900 placeholder:text-zinc-400 focus:outline-none"
+    <div className="relative rounded-[2.5rem] border border-white/5 bg-zinc-900/40 p-12 transition-colors hover:bg-zinc-900/60">
+      <div className="mb-8 flex items-center gap-4">
+        {image ? (
+          <img
+            src={image}
+            alt={name}
+            className="h-14 w-14 rounded-full border-2 border-[#ff7a30] object-cover"
           />
-          <button className="rounded-full bg-[#ff7a30] px-10 py-3.5 font-bold text-white shadow-lg">
-            Send
-          </button>
-        </div>
-
-        <div className="flex flex-wrap justify-center gap-8 text-[10px] font-bold uppercase tracking-widest text-zinc-500">
-          <div className="flex items-center gap-2">
-            <span className="h-1.5 w-1.5 rounded-full bg-[#ff7a30]"></span>
-            4.9/5 Average Ratings
+        ) : (
+          <div className="flex h-14 w-14 items-center justify-center rounded-full border-2 border-[#ff7a30] bg-zinc-800 text-sm font-bold text-white">
+            {name?.charAt(0) || "U"}
           </div>
+        )}
 
-          <div className="flex items-center gap-2">
-            <span className="h-1.5 w-1.5 rounded-full bg-[#ff7a30]"></span>
-            25+ Winning Awards
-          </div>
-
-          <div className="flex items-center gap-2">
-            <span className="h-1.5 w-1.5 rounded-full bg-[#ff7a30]"></span>
-            Certified Product Designer
-          </div>
+        <div>
+          <h4 className="text-lg font-bold text-white">{name}</h4>
+          <p className="text-xs text-zinc-500">{role}</p>
         </div>
       </div>
-    </section>
+
+      <div className="mb-6 flex gap-1 text-orange-500">
+        <span>★</span>
+        <span>★</span>
+        <span>★</span>
+        <span>★</span>
+        <span>★</span>
+        {rating && <span className="ml-2 text-sm font-bold text-white">{rating}</span>}
+      </div>
+
+      <p className="leading-relaxed italic text-zinc-400">{text}</p>
+    </div>
   );
 }
 
-export default CTASection;
+export default TestimonialCard;

@@ -2,11 +2,17 @@ function TestimonialCard({ name, role, rating, image, text }) {
   return (
     <div className="relative rounded-[2.5rem] border border-white/5 bg-zinc-900/40 p-12 transition-colors hover:bg-zinc-900/60">
       <div className="mb-8 flex items-center gap-4">
-        <img
-          src={image}
-          alt={name}
-          className="h-14 w-14 rounded-full border-2 border-[#ff7a30] object-cover"
-        />
+        {image ? (
+          <img
+            src={image}
+            alt={name}
+            className="h-14 w-14 rounded-full border-2 border-[#ff7a30] object-cover"
+          />
+        ) : (
+          <div className="flex h-14 w-14 items-center justify-center rounded-full border-2 border-[#ff7a30] bg-zinc-800 text-sm font-bold text-white">
+            {name?.charAt(0) || "U"}
+          </div>
+        )}
 
         <div>
           <h4 className="text-lg font-bold text-white">{name}</h4>
@@ -20,7 +26,7 @@ function TestimonialCard({ name, role, rating, image, text }) {
         <span>★</span>
         <span>★</span>
         <span>★</span>
-        <span className="ml-2 text-sm font-bold text-white">{rating}</span>
+        {rating && <span className="ml-2 text-sm font-bold text-white">{rating}</span>}
       </div>
 
       <p className="leading-relaxed italic text-zinc-400">{text}</p>

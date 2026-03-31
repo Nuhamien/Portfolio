@@ -1,17 +1,17 @@
-import { Outlet } from 'react-router'
-import Navbar from '../components/layout/Navbar'
-import Footer from '../components/layout/Footer'
+import { Outlet } from "react-router-dom";
+import Navbar from "../components/layout/Navbar";
+import ScrollToTop from "../components/layout/ScrollToTop";
+import Footer from "../components/layout/Footer";
 
 function MainLayout() {
   return (
-    <div className="bg-white text-zinc-900">
+    <div className="min-h-screen bg-white text-zinc-900">
+        <ScrollToTop />
       <Navbar />
-      <main>
-        <Outlet />
-      </main>
-      <Footer />
+      <Outlet />
+      <Footer/>
     </div>
-  )
+  );
 }
 
-export default MainLayout
+export default MainLayout;

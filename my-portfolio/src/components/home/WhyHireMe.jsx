@@ -1,47 +1,67 @@
+import { homeData } from "../../data/homeData";
+
 function WhyHireMe() {
+  const { about } = homeData;
+
   return (
-    <section className="mx-4 my-12 rounded-[3rem] bg-zinc-100 py-24">
-      <div className="mx-auto grid max-w-6xl grid-cols-1 items-center gap-16 px-6 md:grid-cols-2 md:px-8">
-        <div className="relative">
-          <div className="aspect-square w-full overflow-hidden rounded-[2rem] bg-white">
-            <img
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuCVykUyrbe3srrYWq7eKCmaP0YUh_FIACBBpZpCuJREni1EJKaLCDzfxHl_yCxySotblIA9H9Kl1cZrXodU6KNIXD8-9jwSv3njhxgjTq_HwqYg6vQHg2GRjX_yhJH9lEA4KQaeBeCLFZq1CsGjHm6C70yGzhsBdi7rRCGOZ3kiD3Tw7e6DZyT792Nuy0pR-bF36RxMNgMJP23b9tTXWBQSbOZYWMJJEwqWuDx4x0RmLih-ezbVvp51wwlGfYGu8vlzkxDBwZVJKfvL"
-              alt="Jenny"
-              className="h-full w-full object-cover"
-            />
-          </div>
-        </div>
+    <section className="px-6 py-28 md:px-8">
+      <div className="mx-auto max-w-6xl">
 
-        <div className="space-y-10">
-          <h2 className="font-headline text-4xl font-extrabold leading-tight md:text-5xl">
-            Why <span className="text-[#ff7a30]">Hire me</span>?
-          </h2>
-
-          <p className="leading-relaxed text-zinc-500">
-            I design modern digital experiences that balance usability,
-            aesthetics, and business value. My work focuses on helping products
-            feel intuitive, polished, and memorable.
+        {/* HEADER */}
+        <div className="mb-16 max-w-2xl">
+          <p className="mb-4 text-sm font-bold uppercase tracking-[0.2em] text-[#ff7a30]">
+            About Me
           </p>
 
-          <div className="grid grid-cols-2 gap-12">
-            <div>
-              <div className="mb-1 text-4xl font-black">450+</div>
-              <div className="text-xs font-bold uppercase tracking-widest text-zinc-400">
-                Project Completed
-              </div>
-            </div>
+          <h2 className="font-headline text-4xl font-extrabold leading-tight md:text-5xl">
+            Why you should <span className="text-[#ff7a30]">work with me</span>
+          </h2>
+        </div>
 
-            <div>
-              <div className="mb-1 text-4xl font-black">10+</div>
-              <div className="text-xs font-bold uppercase tracking-widest text-zinc-400">
-                Years Experience
-              </div>
-            </div>
+        {/* CONTENT */}
+        <div className="grid gap-10 md:grid-cols-2">
+
+          {/* LEFT */}
+          <div className="space-y-6 text-zinc-600">
+            <p className="leading-relaxed">{about.intro}</p>
+
+            <p className="leading-relaxed">{about.story}</p>
+
+            <p className="leading-relaxed">{about.motivation}</p>
+
+            <p className="leading-relaxed">{about.differentiator}</p>
           </div>
 
-          <button className="rounded-full bg-zinc-200 px-10 py-4 font-bold text-zinc-800 transition-colors hover:bg-zinc-300">
-            Hire me
-          </button>
+          {/* RIGHT - STATS */}
+          <div className="grid grid-cols-2 gap-6">
+            <div className="rounded-[2rem] bg-zinc-100 p-8">
+              <h3 className="mb-2 text-3xl font-black text-[#ff7a30]">
+                {about.stats.projects}
+              </h3>
+              <p className="text-sm text-zinc-500">Projects</p>
+            </div>
+
+            <div className="rounded-[2rem] bg-zinc-100 p-8">
+              <h3 className="mb-2 text-3xl font-black text-[#ff7a30]">
+                {about.stats.experience}
+              </h3>
+              <p className="text-sm text-zinc-500">Experience</p>
+            </div>
+
+            <div className="rounded-[2rem] bg-zinc-100 p-8">
+              <h3 className="mb-2 text-3xl font-black text-[#ff7a30]">
+                {about.stats.certifications || "—"}
+              </h3>
+              <p className="text-sm text-zinc-500">Certifications</p>
+            </div>
+
+            <div className="rounded-[2rem] bg-zinc-100 p-8">
+              <h3 className="mb-2 text-3xl font-black text-[#ff7a30]">
+                {about.stats.achievements || "—"}
+              </h3>
+              <p className="text-sm text-zinc-500">Achievements</p>
+            </div>
+          </div>
         </div>
       </div>
     </section>

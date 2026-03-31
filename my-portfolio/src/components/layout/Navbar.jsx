@@ -1,16 +1,20 @@
 import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
+import { homeData } from "../../data/homeData";
+import logo from "../../assets/images/logo.png"; // keep this if you have your logo image
 
 function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const navLinks = [
     { name: "About", path: "/about" },
-    { name: "Service", path: "/services" },
+    { name: "Services", path: "/services" },
     { name: "Resume", path: "/resume" },
-    { name: "Project", path: "/projects" },
+    { name: "Projects", path: "/projects" },
     { name: "Contact", path: "/contact" },
   ];
+
+  const brandName = "Nuhamien";
 
   return (
     <nav className="fixed top-6 left-1/2 z-50 w-[90%] max-w-5xl -translate-x-1/2 rounded-full border border-white/10 bg-black/90 px-6 py-3 backdrop-blur-md">
@@ -28,7 +32,13 @@ function Navbar() {
               <NavLink
                 key={link.name}
                 to={link.path}
-                className="text-sm font-medium text-white/70 transition-colors hover:text-[#ff7a30]"
+                className={({ isActive }) =>
+                  `text-sm font-medium transition-colors ${
+                    isActive
+                      ? "text-[#ff7a30]"
+                      : "text-white/70 hover:text-[#ff7a30]"
+                  }`
+                }
               >
                 {link.name}
               </NavLink>
@@ -36,12 +46,14 @@ function Navbar() {
           </div>
         </div>
 
-        <Link to="/" className="flex items-center gap-2">
-          <div className="flex h-8 w-8 items-center justify-center rounded-full bg-[#ff7a30]">
-            <span className="text-xs font-bold text-white">J</span>
-          </div>
-          <span className="text-lg font-bold tracking-tighter text-white">
-            JCREA
+        <Link to="/" className="flex items-center gap-3">
+          <img
+            src={logo}
+            alt={brandName}
+            className="h-10 w-10 object-contain"
+          />
+          <span className="text-lg font-bold tracking-tight text-white">
+            {brandName}
           </span>
         </Link>
 
@@ -50,7 +62,13 @@ function Navbar() {
             <NavLink
               key={link.name}
               to={link.path}
-              className="text-sm font-medium text-white/70 transition-colors hover:text-[#ff7a30]"
+              className={({ isActive }) =>
+                `text-sm font-medium transition-colors ${
+                  isActive
+                    ? "text-[#ff7a30]"
+                    : "text-white/70 hover:text-[#ff7a30]"
+                }`
+              }
             >
               {link.name}
             </NavLink>
@@ -60,6 +78,7 @@ function Navbar() {
         <button
           className="text-white md:hidden"
           onClick={() => setMenuOpen(!menuOpen)}
+          aria-label="Toggle menu"
         >
           ☰
         </button>
@@ -72,7 +91,13 @@ function Navbar() {
               key={link.name}
               to={link.path}
               onClick={() => setMenuOpen(false)}
-              className="text-sm font-medium text-white/80 transition-colors hover:text-[#ff7a30]"
+              className={({ isActive }) =>
+                `text-sm font-medium transition-colors ${
+                  isActive
+                    ? "text-[#ff7a30]"
+                    : "text-white/80 hover:text-[#ff7a30]"
+                }`
+              }
             >
               {link.name}
             </NavLink>

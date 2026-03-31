@@ -1,11 +1,19 @@
+import AboutHero from "../components/about/AboutHero";
+import AboutStory from "../components/about/AboutStory";
+import AboutStats from "../components/about/AboutStats";
+import AboutSkills from "../components/about/AboutSkills";
+import AboutValues from "../components/about/AboutValues";
+
 function About() {
   return (
-    <section className="px-8 py-40">
-      <div className="mx-auto max-w-6xl">
-        <h1 className="font-headline text-5xl font-extrabold">About Me</h1>
-      </div>
-    </section>
-  )
+    <>
+      <AboutHero />
+      <AboutStory />
+      <AboutStats />
+      <AboutSkills />
+      <AboutValues />
+    </>
+  );
 }
 
-export default About
+export default About;

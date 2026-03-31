@@ -1,4 +1,9 @@
+import { Link } from "react-router-dom";
+import { homeData } from "../../data/homeData";
+
 function Hero() {
+  const { hero } = homeData;
+
   return (
     <section className="relative overflow-hidden px-6 pb-20 pt-40 md:px-8">
       <div className="mx-auto flex max-w-6xl flex-col items-center text-center">
@@ -8,28 +13,86 @@ function Hero() {
           </span>
         </div>
 
-        <h1 className="font-headline mb-8 text-5xl font-extrabold leading-none tracking-tight md:text-7xl lg:text-8xl">
-          I'm <span className="text-[#ff7a30]">Jenny,</span>
+        <h1 className="font-headline mb-8 text-5xl font-extrabold leading-[1.1] tracking-tight md:text-7xl lg:text-8xl">
+          {hero.title.main.includes(hero.title.highlight) ? (
+            <>
+              {hero.title.main.replace(hero.title.highlight, "")}
+              <span className="text-[#ff7a30]">{hero.title.highlight}</span>
+            </>
+          ) : (
+            <>
+              {hero.title.main}
+              <span className="text-[#ff7a30]"> {hero.title.highlight}</span>
+            </>
+          )}
           <br />
-          Product Designer
+          {hero.title.sub}
         </h1>
 
-        <div className="relative mt-12 w-full max-w-xl">
+        <p className="mb-10 max-w-2xl text-base leading-relaxed text-zinc-500 md:text-lg">
+          {hero.description}
+        </p>
+
+        <div className="relative mt-6 w-full max-w-xl">
           <div className="absolute left-1/2 top-1/2 -z-10 h-72 w-72 -translate-x-1/2 -translate-y-1/2 rounded-full bg-orange-100/60 md:h-[420px] md:w-[420px]"></div>
 
           <img
             src="https://lh3.googleusercontent.com/aida-public/AB6AXuBqGnk23USkJqrvjvdTIw41I31sETwZZCrZnuxwLJ5msfasH7kBseC_XzO-EKhL8T_eIYA5WkUiou5xxHKJRk0kCwExC0ObZ1mNR4HkSGaBFPov6rtMBrYV_wJ80hoPiFK735x9CqPzG4k1GSWaXmc5SetZZ3cGR18OQVQME57_mwOun2DtB-6kcheaKcaFecjx6pzUcm2TBwUkAJhjQLCKx4GW8sfgVQGOdhzbg9-KWa0bNbE93-aj_yGmT1eOoI4RXFWG86Hgj86L"
-            alt="Jenny Portrait"
+            alt={hero.title.highlight}
             className="relative z-10 mx-auto h-auto w-full"
           />
 
           <div className="absolute bottom-6 left-1/2 z-20 flex -translate-x-1/2 gap-4">
-            <button className="rounded-full bg-[#ff7a30] px-6 py-3 font-bold text-white transition-transform hover:scale-105">
-              Portfolio
-            </button>
-            <button className="rounded-full bg-zinc-200 px-6 py-3 font-bold text-zinc-800 transition-colors hover:bg-zinc-300">
-              Hire me
-            </button>
+            {hero.buttons.map((button) => {
+              const commonClass =
+                "rounded-full px-6 py-3 font-bold transition-transform";
+              const isPrimary = button.text.toLowerCase().includes("view");
+
+              if (button.action === "navigate") {
+                return (
+                  <Link
+                    key={button.text}
+                    to={button.target}
+                    className={`${commonClass} ${
+                      isPrimary
+                        ? "bg-[#ff7a30] text-white hover:scale-105"
+                        : "bg-zinc-200 text-zinc-800 hover:bg-zinc-300"
+                    }`}
+                  >
+                    {button.text}
+                  </Link>
+                );
+              }
+
+              if (button.action === "scroll") {
+                return (
+                  <a
+                    key={button.text}
+                    href={`#${button.target}`}
+                    className={`${commonClass} ${
+                      isPrimary
+                        ? "bg-[#ff7a30] text-white hover:scale-105"
+                        : "bg-zinc-200 text-zinc-800 hover:bg-zinc-300"
+                    }`}
+                  >
+                    {button.text}
+                  </a>
+                );
+              }
+
+              return (
+                <button
+                  key={button.text}
+                  className={`${commonClass} ${
+                    isPrimary
+                      ? "bg-[#ff7a30] text-white hover:scale-105"
+                      : "bg-zinc-200 text-zinc-800 hover:bg-zinc-300"
+                  }`}
+                >
+                  {button.text}
+                </button>
+              );
+            })}
           </div>
         </div>
       </div>

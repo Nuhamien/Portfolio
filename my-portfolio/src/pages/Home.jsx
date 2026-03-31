@@ -1,27 +1,27 @@
-import Hero from "../components/home/Hero";
-import ServicesPreview from "../components/home/ServicesPreview";
-import ExperienceTimeline from "../components/home/ExperienceTimeline";
-import WhyHireMe from "../components/home/WhyHireMe";
-import PortfolioPreview from "../components/home/PortfolioPreview";
-import Testimonials from "../components/home/Testimonials";
-import CTASection from "../components/home/CTASection";
-import MarqueeBanner from "../components/home/MarqueeBanner";
-import BlogPreview from "../components/home/BlogPreview";
+import Hero from '../components/home/Hero'
+import ServicesPreview from '../components/home/ServicesPreview'
+import ProcessTimeline from '../components/home/ProcessTimeline'
+import WhyHireMe from '../components/home/WhyHireMe'
+import PortfolioPreview from '../components/home/PortfolioPreview'
+import Testimonials from '../components/home/Testimonials'
+
+import MarqueeBanner from '../components/home/MarqueeBanner'
+import BlogPreview from '../components/home/BlogPreview'
 
 function Home() {
   return (
     <>
       <Hero />
       <ServicesPreview />
-      <ExperienceTimeline />
+      <ProcessTimeline />
       <WhyHireMe />
       <PortfolioPreview />
       <Testimonials />
-      <CTASection />
+      
       <MarqueeBanner />
       <BlogPreview />
     </>
-  );
+  )
 }
 
-export default Home;
+export default Home
