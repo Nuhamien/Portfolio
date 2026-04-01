@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { homeData } from "../../data/homeData";
+import { projectsData } from "../../data/projectsData";
 import PortfolioCard from "../cards/PortfolioCard";
 
 function PortfolioPreview() {
@@ -7,7 +8,15 @@ function PortfolioPreview() {
   const cardRefs = useRef([]);
   const [activeIndex, setActiveIndex] = useState(0);
 
-  const projects = homeData.projects;
+  const { projectsPreview } = homeData;
+  console.log(homeData);
+  console.log(homeData.portfolioPreview);
+
+  const projects = projectsPreview.projectIds
+    .map((id) =>
+      projectsData.projectsList.find((project) => project.id === id)
+    )
+    .filter(Boolean);
 
   const updateActiveCard = () => {
     const container = scrollRef.current;
@@ -63,24 +72,26 @@ function PortfolioPreview() {
   return (
     <section id="projects" className="overflow-hidden px-6 py-28 md:px-8">
       <div className="mx-auto max-w-6xl">
-        
-        {/* HEADER */}
-        <div className="mb-16 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
-          <h2 className="font-headline text-4xl font-extrabold leading-tight md:text-5xl">
-            Lets have a look at
+       <div class="flex justify-between items-end mb-16">
+       <h2 class="font-headline text-5xl font-extrabold leading-tight">
+            {projectsPreview.title.main}
             <br />
-            my <span className="text-[#ff7a30]">Projects</span>
+            {projectsPreview.title.sub}{" "}
+            
+            <span className="text-[#ff7a30]">
+              {projectsPreview.title.highlight}
+            </span>
+             <button class="bg-[#ff7a30] text-white px-8 py-3 rounded-full font-bold">See All</button>
           </h2>
         </div>
 
-        {/* SCROLL */}
         <div
           ref={scrollRef}
           className="no-scrollbar flex snap-x snap-mandatory gap-6 overflow-x-auto scroll-smooth pb-6"
         >
           {projects.map((project, index) => (
             <div
-              key={project.title}
+              key={project.id}
               ref={(el) => (cardRefs.current[index] = el)}
               className="min-w-[85vw] snap-start md:min-w-[520px] lg:min-w-[580px]"
             >
@@ -89,7 +100,6 @@ function PortfolioPreview() {
           ))}
         </div>
 
-        {/* DOTS */}
         <div className="mt-6 flex justify-center gap-3">
           {projects.map((_, index) => (
             <button

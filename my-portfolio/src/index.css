@@ -35,6 +35,9 @@ body {
 .marquee:hover {
   animation-play-state: paused;
 }
+.marquee-track {
+  animation: marqueeMove 18s linear infinite;
+}
 
 @keyframes marquee {
   from {

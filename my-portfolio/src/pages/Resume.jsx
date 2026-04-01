@@ -7,14 +7,14 @@ import ResumeCTA from "../components/resume/ResumeCTA";
 
 function Resume() {
   return (
-    <>
+    <main>
       <ResumeHero />
       <ResumeSummary />
       <ResumeSkills />
       <ResumeProjects />
       <ResumeProcess />
       <ResumeCTA />
-    </>
+    </main>
   );
 }
 

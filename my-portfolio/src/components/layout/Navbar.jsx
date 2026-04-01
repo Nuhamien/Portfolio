@@ -1,30 +1,22 @@
 import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
-import { homeData } from "../../data/homeData";
-import logo from "../../assets/images/logo.png"; // keep this if you have your logo image
+import { navbarData } from "../../data/site/navbarData";
+import logo from "../../assets/images/logo.png";
 
 function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
 
-  const navLinks = [
-    { name: "About", path: "/about" },
-    { name: "Services", path: "/services" },
-    { name: "Resume", path: "/resume" },
-    { name: "Projects", path: "/projects" },
-    { name: "Contact", path: "/contact" },
-  ];
-
-  const brandName = "Nuhamien";
+  const { homeLink, brand, navLinks } = navbarData;
 
   return (
     <nav className="fixed top-6 left-1/2 z-50 w-[90%] max-w-5xl -translate-x-1/2 rounded-full border border-white/10 bg-black/90 px-6 py-3 backdrop-blur-md">
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-8">
           <Link
-            to="/"
+            to={homeLink.path}
             className="rounded-full bg-[#ff7a30] px-6 py-2 text-sm font-bold text-white"
           >
-            Home
+            {homeLink.label}
           </Link>
 
           <div className="hidden gap-8 md:flex">
@@ -46,14 +38,14 @@ function Navbar() {
           </div>
         </div>
 
-        <Link to="/" className="flex items-center gap-3">
+        <Link to={brand.path} className="flex items-center gap-3">
           <img
             src={logo}
-            alt={brandName}
+            alt={brand.name}
             className="h-10 w-10 object-contain"
           />
           <span className="text-lg font-bold tracking-tight text-white">
-            {brandName}
+            {brand.name}
           </span>
         </Link>
 

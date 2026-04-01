@@ -5,12 +5,12 @@ import ServicesCTA from "../components/services/ServicesCTA";
 
 function Services() {
   return (
-    <>
+    <main>
       <ServicesHero />
       <ServicesGrid />
       <ServicesProcess />
       <ServicesCTA />
-    </>
+    </main>
   );
 }
 

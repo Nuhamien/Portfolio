@@ -7,7 +7,7 @@ function MainLayout() {
   return (
     <div className="min-h-screen bg-white text-zinc-900">
         <ScrollToTop />
-      <Navbar />
+    <Navbar />
       <Outlet />
       <Footer/>
     </div>

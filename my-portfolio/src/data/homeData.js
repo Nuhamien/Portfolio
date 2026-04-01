@@ -1,8 +1,8 @@
+// src/data/homeData.js
+
 export const homeData = {
-    brand: {
-  name: "Nuhamien",
-},
   hero: {
+    badge: "Hello!",
     title: {
       main: "I’m Nuhamien,",
       sub: "I design and build clean digital experiences",
@@ -15,190 +15,200 @@ export const homeData = {
         text: "View Projects",
         action: "scroll",
         target: "projects",
+        variant: "primary",
       },
       {
         text: "Hire Me",
         action: "navigate",
         target: "/contact",
+        variant: "secondary",
       },
     ],
     image: {
       type: "avatar",
+      src: "YOUR_IMAGE_URL_HERE",
+      alt: "Nuhamien portrait",
     },
   },
 
-  about: {
-    intro:
-      "I’m a UI/UX designer and frontend developer focused on creating simple, clean, and usable digital experiences. I enjoy designing interfaces that are easy to understand and practical for real users, while continuously improving my skills through hands-on projects and learning.",
-
-    story:
-      "I started exploring UI/UX design with the goal of reducing user frustration and making digital products easier to use. I believe that design should not only look good but also feel simple and intuitive. I enjoy turning ideas into clear, usable interfaces that improve how people interact with technology.",
-
-    motivation:
-      "I’m motivated by exploring new ideas and continuously improving my approach to design and development.",
-
-    differentiator:
-      "I focus on creating clean and usable interfaces that prioritize clarity and simplicity.",
-
-    stats: {
-      experience: "Entry-level",
-      projects: "5+",
-      achievements: "",
-      certifications: "",
+  servicesPreview: {
+    badge: "What I Do",
+    title: {
+      main: "My",
+      highlight: "Services",
+      suffix: ".",
     },
-  },
-
-  skills: {
-    categories: [
-      {
-        title: "UI Design",
-        items: [
-          { name: "Figma", level: "Intermediate" },
-          { name: "Visual Design", level: "Intermediate" },
-          { name: "Layout & Spacing", level: "Intermediate" },
-        ],
-      },
-      {
-        title: "UX",
-        items: [
-          { name: "User Flows", level: "Beginner" },
-          { name: "Wireframing", level: "Intermediate" },
-          { name: "Usability Thinking", level: "Beginner" },
-        ],
-      },
-      {
-        title: "Frontend",
-        items: [
-          { name: "HTML", level: "Intermediate" },
-          { name: "CSS", level: "Intermediate" },
-          { name: "React (Vite)", level: "Beginner" },
-          { name: "Tailwind CSS", level: "Intermediate" },
-          { name: "Material UI", level: "Beginner" },
-        ],
-      },
-      {
-        title: "Tools",
-        items: [
-          { name: "Figma", level: "Intermediate" },
-          { name: "Git", level: "Intermediate" },
-        ],
-      },
+    description:
+      "I design clean interfaces and build responsive frontend experiences that focus on clarity, usability, and simplicity.",
+    serviceIds: [
+      "ui-ux-design",
+      "web-design",
+      "mobile-app-design",
+      "frontend-development",
     ],
   },
 
-  services: [
-    {
-      title: "UI/UX Design",
-      description:
-        "Designing clean, user-friendly interfaces focused on usability, clarity, and a smooth user experience.",
+  blogPreview: {
+    title: {
+      main: "From my",
+      sub: "blog post",
     },
-    {
-      title: "Web Design",
-      description:
-        "Creating modern and responsive website designs that are visually appealing and easy to navigate.",
+    button: {
+      text: "See All",
+      path: "/blog",
     },
-    {
-      title: "Mobile App Design",
-      description:
-        "Designing simple and intuitive mobile interfaces that provide a seamless user experience across devices.",
-    },
-    {
-      title: "Frontend Development",
-      description:
-        "Building responsive and functional interfaces using modern frontend tools like React, Tailwind CSS, and Material UI.",
-    },
-  ],
-
-  projects: [
-    {
-      title: "Gift Shop Delivery Platform",
-      category: "Web App",
-      description:
-        "A web-based gift ordering platform where users can choose a gift, place an order, and provide receiver details for delivery. The system also supports an admin workflow where a delivery person is assigned to collect the gift from the shop and deliver it to the recipient.",
-      image: "",
-      liveLink: "",
-      githubLink: "",
-    },
-    {
-      title: "One Stop Auto Lounge",
-      category: "Website",
-      description:
-        "A service-based company website designed to present automotive services in a clear and structured way. The project focuses on clean layout, responsive design, and improving how users navigate and understand service offerings.",
-      image: "",
-      liveLink: "",
-      githubLink: "",
-    },
-    {
-      title: "PulseChat",
-      category: "Mobile App Concept",
-      description:
-        "A mobile app concept focused on social interaction, messaging, and community-based communication. The project explores clear content structures, engaging discussions, and intuitive interaction patterns while maintaining a clean and user-friendly interface.",
-      image: "",
-      liveLink: "",
-      githubLink: "",
-    },
-    {
-      title: "Smart Tutor",
-      category: "Web App",
-      description:
-        "A full-stack tutoring platform designed to connect families with suitable tutors based on personalized search criteria. The system allows users to find verified tutors, interact through real-time chat, and evaluate tutors through ratings and reviews.",
-      image: "",
-      liveLink: "",
-      githubLink: "",
-    },
-    {
-      title: "Green Leaf",
-      category: "Mobile App",
-      description:
-        "A mobile application designed for recording plant species and logging observations. The app allows users to manage plant records and notes with full CRUD functionality, focusing on simplicity, organization, and ease of use.",
-      image: "",
-      liveLink: "",
-      githubLink: "",
-    },
-  ],
-
-  process: [
-    {
-      title: "Research & Brainstorming",
-      description:
-        "Understanding the problem, exploring ideas, and identifying user needs.",
-    },
-    {
-      title: "Planning",
-      description:
-        "Structuring the solution, defining features, and organizing the workflow.",
-    },
-    {
-      title: "Design System Setup",
-      description:
-        "Creating design guidelines, components, and visual consistency.",
-    },
-    {
-      title: "UI Design",
-      description:
-        "Designing clean, user-friendly interfaces based on the planned structure.",
-    },
-    {
-      title: "Development",
-      description:
-        "Building the interface using modern frontend tools and ensuring responsiveness.",
-    },
-  ],
-
+    posts: [
+      {
+        id: "post-1",
+        category: "UI/UX Design",
+        author: "Jayesh Patil",
+        date: "10 Nov, 2023",
+        title: "Design Unraveled: Behind the Scenes of UI/UX Magic",
+        excerpt: "Short blog description here.",
+         image:
+      "https://lh3.googleusercontent.com/aida-public/AB6AXuDIAUgZS4wxBVzs3n_lnchgdiTIlGvFiz1o5AkdF4Pz-FpJBAAqy_vDKyYA7Ee8t0hI5w7C3JS9GsFsjAu-paIMHZ1duILWn-mXQEGzrsuDWGW4KvT4DFW13-nYx8JopaKsl2pF22CnQ4B5Slko4DsgeLAK7-VX76sU33ug7iqWi1qBZOJ9gwRJwBqSVQfN01ZM_acm9Pp4_uTHDbaI0IOOgqR_RToSKtVLXkkAapjyeQOFjtIE-mCQmMWCwFwiWQP-24NquphEEZQL",
+        bgColor: "#dcdde1",
+        slug: "your-first-blog-title",
+      },
+      {
+        id: "post-2",
+        category: "App Design",
+        author: "Jayesh Patil",
+        title: "Sugee: Loan Management System for Rural Sector.",
+        excerpt: "Another short blog description here.",
+        image:
+           "https://lh3.googleusercontent.com/aida-public/AB6AXuA0gBoEnEhU_ZcS8cPpIUzOftPA9W-OWFVhZcnBvl4x5PYejmM2BNOH2XBYIoRv01_XB3A1yDvZmmYNcDdCD8gzeXTu0G3P2d_XU661-KCelRly73of7CHSBV50v0T4hPJDBglKVoohjcxgyhvy9jYEPS8uU3EXBhxNyaDEHmrrwJJnLycRBNDfxeNKP15pN6mKUrpdnRlrfsKsx8O2Os_cU66AwKtKKZI2_5pqS597qeGs4O-G9nV5y3s6bECYV4ZIgALhbXhfAK0k",
+        date: "09 Oct, 2023",
+        bgColor: "#0e8354",
+        slug: "another-blog-title",
+      },
+      {
+        id: "post-3",
+        category: "App Design",
+        author: "Jayesh Patil",
+        title: "Cinetrade: Innovative way to invest in Digital Media",
+        excerpt: "Another blog summary.",
+        image:
+               "https://lh3.googleusercontent.com/aida-public/AB6AXuDlvun2y7cX7ZnmjcLMXeyuaOtfs-9ENq3BD6Wh4uAe7eNBhBfvrpw25gDqph90LMifuEZ8VPqkeO6fFcXuG6VZlB7Zev63bwhd0V1v0d5BKFcLrdzkUk2GnfwA7MmXCbYTTqx0sPpXjeouExgm8h0xLH_I9Z9MjUgZNOhV47wh2QfrN4lkEvKvi6LazSHW6xpMEPtTUfvAoJh8x9J9obBn6NEIsBq8lCcSa1-3x5UhRa224Hm83-40nw9ygsjLTGc5grmuEDF3pYjW",
+        date: "13 Aug, 2023",
+        bgColor: "#ffbd00",
+        slug: "third-blog-title",
+      },
+    ],
+  },
   testimonials: {
-    enabled: true,
-    items: [],
-    placeholder: "Testimonials coming soon...",
+  enabled: true,
+
+  title: {
+    main: "What people",
+    highlight: "say",
+    suffix: ".",
   },
 
-  contact: {
-    email: "tarikunuhamien@gmail.com",
-    phone: "+251972275637",
-    location: "Addis Ababa, Ethiopia",
-    socials: {
-      linkedin: "https://www.linkedin.com/in/nuhamien-tariku-342558331/",
-      github: "https://github.com/Nuhamien",
-      telegram: "https://t.me/Mayient",
-    },
+  description:
+    "Feedback from people I’ve worked with and collaborated with.",
+
+  items: [
+   {
+    id: 1,
+    name: "Jayesh Patil",
+    role: "CEO, Lirante",
+    rating: "5.0",
+    image:
+      "https://lh3.googleusercontent.com/aida-public/AB6AXuCBdaJ62o6oqkKHp7N01pji45kt_qbCpUbwXop5xn_Qvb8eMRZa1E8Dox7LvtgGSI--bwB-ElpTxa_mhXh6PBtZUQzdGdGVlmCHs9BALVxera43ZoiuTq7rPtcuMOM-8EMbCgyVWqTNdOs_tsXMR_V8QY5dkW0ivvtAGkRmXCpgHBTsBhyFlakEESEMLPH_hmwGjDZsPRvUe7lSIm85zT7AzECkWf_fIEdcLAWXuTgST9W9JV25Zx9X7Joieow1gkK0oDn2QhFg0RyC",
+    text: "Jenny’s design work brought clarity, elegance, and strong usability to our product. Highly recommended for premium digital experiences.",
   },
+  {
+    id: 2,
+    name: "Jayesh Patil",
+    role: "CEO, Lirante",
+    rating: "5.0",
+    image:
+      "https://lh3.googleusercontent.com/aida-public/AB6AXuCBdaJ62o6oqkKHp7N01pji45kt_qbCpUbwXop5xn_Qvb8eMRZa1E8Dox7LvtgGSI--bwB-ElpTxa_mhXh6PBtZUQzdGdGVlmCHs9BALVxera43ZoiuTq7rPtcuMOM-8EMbCgyVWqTNdOs_tsXMR_V8QY5dkW0ivvtAGkRmXCpgHBTsBhyFlakEESEMLPH_hmwGjDZsPRvUe7lSIm85zT7AzECkWf_fIEdcLAWXuTgST9W9JV25Zx9X7Joieow1gkK0oDn2QhFg0RyC",
+    text: "From concept to polished interface, the work was thoughtful, user-focused, and visually impressive throughout the project.",
+  },
+  ],
+ placeholder: {
+    title: "Testimonials coming soon...",
+    description:
+      "I’m currently building my portfolio and collecting feedback from real projects and collaborations. This section will be updated as I grow and complete more work.",
+    quoteMark: "“",
+  },
+},
+processPreview: {
+  badge: "My Process",
+  title: {
+    main: "How I turn ideas into",
+    highlight: "usable digital experiences",
+  },
+  featuredCount: 3,
+  stepIds: [
+    "research-brainstorming",
+    "planning",
+    "design-system-setup",
+    "ui-design",
+    "development",
+  ],
+},
+marquee: {
+  items: [
+    "UX Design",
+    "App Design",
+    "Dashboard",
+    "Wireframe",
+    "User Research",
+  ],
+  separator: "✦",
+},
+ projectsPreview: {
+  title: {
+    main: "Lets have a look at",
+    sub: "my",
+    highlight: "Projects",
+  },
+  projectIds: [
+    "gift-shop",
+    "one-stop-auto-lounge",
+    "pulsechat"
+  ],
+},
+ whyHireMe: {
+      titleStart: "Why ",
+  titleHighlight: "Hire me",
+  titleEnd: "?",
+    description:
+      "I design clean, user-friendly interfaces and turn them into responsive frontend experiences with attention to detail.",
+    image:
+      "https://lh3.googleusercontent.com/aida-public/AB6AXuCVykUyrbe3srrYWq7eKCmaP0YUh_FIACBBpZpCuJREni1EJKaLCDzfxHl_yCxySotblIA9H9Kl1cZrXodU6KNIXD8-9jwSv3njhxgjTq_HwqYg6vQHg2GRjX_yhJH9lEA4KQaeBeCLFZq1CsGjHm6C70yGzhsBdi7rRCGOZ3kiD3Tw7e6DZyT792Nuy0pR-bF36RxMNgMJP23b9tTXWBQSbOZYWMJJEwqWuDx4x0RmLih-ezbVvp51wwlGfYGu8vlzkxDBwZVJKfvL",
+    stats: [
+      {
+        value: "5+",
+        label: "Projects Completed",
+      },
+      {
+        value: "1+",
+        label: "Years Learning & Building",
+      },
+    ],
+    buttonText: "Hire Me",
+    buttonLink: "/contact",
+  },
+homeCTA: {
+  title: {
+    line1: "Have an Awesome Project Idea?",
+    line2Start: "",
+    line2Highlight: "Let's Discuss",
+  },
+
+  input: {
+    placeholder: "Enter Email Address",
+    buttonText: "Send",
+  },
+
+  highlights: [
+    { text: "4.9/5 Average Ratings" },
+    { text: "25+ Winning Awards" },
+    { text: "Certified Product Designer" },
+  ],
+},
 };

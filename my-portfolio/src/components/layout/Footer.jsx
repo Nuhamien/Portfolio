@@ -1,33 +1,26 @@
 import { Link } from "react-router-dom";
-import { homeData } from "../../data/homeData";
-import logo from "../../assets/images/logo.png"; // keep this if you have your logo image
+import { footerData } from "../../data/site/footerData";
+import logo from "../../assets/images/logo.png";
 
 function Footer() {
-  const navLinks = [
-    { name: "Home", path: "/" },
-    { name: "About", path: "/about" },
-    { name: "Services", path: "/services" },
-    { name: "Resume", path: "/resume" },
-    { name: "Projects", path: "/projects" },
-    { name: "Contact", path: "/contact" },
-  ];
-
-  const brandName = "Nuhamien";
-  const { contact } = homeData;
+  const { ctaSection, brand, navLinks, socialLinks, contact, bottomBar } =
+    footerData;
 
   return (
     <>
       <section className="mx-4 rounded-t-[3rem] bg-[#121212] py-16">
         <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-8 px-6 md:flex-row md:px-8">
           <h2 className="font-headline text-center text-4xl font-extrabold text-white md:text-left md:text-5xl">
-            Let’s build something <span className="text-[#ff7a30]">great</span>.
+            {ctaSection.title}
+            <span className="text-[#ff7a30]">{ctaSection.highlight}</span>
+            {ctaSection.suffix}
           </h2>
 
           <Link
-            to="/contact"
+            to={ctaSection.button.path}
             className="flex items-center gap-2 rounded-full bg-[#ff7a30] px-10 py-4 font-bold text-white transition-transform hover:scale-105"
           >
-            Contact Me <span>↗</span>
+            {ctaSection.button.label} <span>{ctaSection.button.icon}</span>
           </Link>
         </div>
       </section>
@@ -35,52 +28,34 @@ function Footer() {
       <footer className="mx-4 rounded-b-[3rem] border-t border-white/5 bg-[#121212] pb-10 pt-20">
         <div className="mx-auto mb-20 grid max-w-6xl grid-cols-1 gap-16 px-6 md:grid-cols-4 md:px-8">
           <div className="space-y-8 md:col-span-2">
-            <Link to="/" className="flex items-center gap-3">
+            <Link to={brand.path} className="flex items-center gap-3">
               <img
                 src={logo}
-                alt={brandName}
+                alt={brand.name}
                 className="h-10 w-10 object-contain"
               />
               <span className="text-lg font-bold tracking-tight text-white">
-                {brandName}
+                {brand.name}
               </span>
             </Link>
 
             <p className="max-w-sm text-sm leading-relaxed text-zinc-500">
-              UI/UX designer and frontend developer focused on creating simple,
-              clean, and usable digital experiences.
+              {brand.description}
             </p>
 
             <div className="flex gap-4">
-              <a
-                href={contact.socials.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="LinkedIn"
-                className="flex h-10 w-10 items-center justify-center rounded-lg bg-zinc-800 text-sm font-bold text-white transition-colors hover:bg-[#ff7a30]"
-              >
-                in
-              </a>
-
-              <a
-                href={contact.socials.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="GitHub"
-                className="flex h-10 w-10 items-center justify-center rounded-lg bg-zinc-800 text-sm font-bold text-white transition-colors hover:bg-[#ff7a30]"
-              >
-                gh
-              </a>
-
-              <a
-                href={contact.socials.telegram}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Telegram"
-                className="flex h-10 w-10 items-center justify-center rounded-lg bg-zinc-800 text-sm font-bold text-white transition-colors hover:bg-[#ff7a30]"
-              >
-                tg
-              </a>
+              {socialLinks.map((social) => (
+                <a
+                  key={social.name}
+                  href={social.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={social.name}
+                  className="flex h-10 w-10 items-center justify-center rounded-lg bg-zinc-800 text-sm font-bold text-white transition-colors hover:bg-[#ff7a30]"
+                >
+                  {social.shortLabel}
+                </a>
+              ))}
             </div>
           </div>
 
@@ -135,15 +110,18 @@ function Footer() {
         </div>
 
         <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 border-t border-white/5 px-6 py-8 text-xs font-medium text-zinc-500 md:flex-row md:px-8">
-          <p>© 2026 {brandName}. All Rights Reserved.</p>
+          <p>{bottomBar.copyright}</p>
 
           <div className="flex gap-8">
-            <a href="#" className="transition-colors hover:text-white">
-              User Terms & Conditions
-            </a>
-            <a href="#" className="transition-colors hover:text-white">
-              Privacy Policy
-            </a>
+            {bottomBar.links.map((link) => (
+              <a
+                key={link.name}
+                href={link.path}
+                className="transition-colors hover:text-white"
+              >
+                {link.name}
+              </a>
+            ))}
           </div>
         </div>
       </footer>

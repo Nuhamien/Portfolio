@@ -1,20 +1,13 @@
-import { homeData } from "../../data/homeData";
+import { aboutData } from "../../data/aboutData";
 
 function AboutStats() {
-  const { stats } = homeData.about;
-
-  const statItems = [
-    { label: "Experience", value: stats.experience || "—" },
-    { label: "Projects", value: stats.projects || "—" },
-    { label: "Achievements", value: stats.achievements || "—" },
-    { label: "Certifications", value: stats.certifications || "—" },
-  ];
+  const { statsSection } = aboutData;
 
   return (
     <section className="px-6 py-24 md:px-8">
       <div className="mx-auto max-w-6xl">
         <div className="grid grid-cols-2 gap-6 md:grid-cols-4">
-          {statItems.map((item) => (
+          {statsSection.items.map((item) => (
             <div
               key={item.label}
               className="rounded-[2rem] bg-white p-8 shadow-sm ring-1 ring-zinc-200"

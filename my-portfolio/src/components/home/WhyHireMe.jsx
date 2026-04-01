@@ -1,67 +1,52 @@
+import { Link } from "react-router-dom";
 import { homeData } from "../../data/homeData";
 
 function WhyHireMe() {
-  const { about } = homeData;
+  const section = homeData?.whyHireMe;
+
+  if (!section) return null;
 
   return (
-    <section className="px-6 py-28 md:px-8">
-      <div className="mx-auto max-w-6xl">
-
-        {/* HEADER */}
-        <div className="mb-16 max-w-2xl">
-          <p className="mb-4 text-sm font-bold uppercase tracking-[0.2em] text-[#ff7a30]">
-            About Me
-          </p>
-
-          <h2 className="font-headline text-4xl font-extrabold leading-tight md:text-5xl">
-            Why you should <span className="text-[#ff7a30]">work with me</span>
-          </h2>
+    <section className="mx-4 my-12 rounded-[3rem] bg-zinc-100 py-24">
+      <div className="mx-auto grid max-w-6xl grid-cols-1 items-center gap-16 px-8 md:grid-cols-2">
+        <div className="relative">
+          <div className="aspect-square w-full overflow-hidden rounded-[2rem] bg-white">
+            <img
+              src={section.image}
+              alt="Why hire me"
+              className="h-full w-full object-cover"
+            />
+          </div>
         </div>
 
-        {/* CONTENT */}
-        <div className="grid gap-10 md:grid-cols-2">
+        <div className="space-y-10">
+          <h2 className="font-headline text-5xl font-extrabold leading-tight">
+  {section.titleStart}
+  <span className="text-[#ff7a30]">{section.titleHighlight}</span>
+  {section.titleEnd}
+</h2>
 
-          {/* LEFT */}
-          <div className="space-y-6 text-zinc-600">
-            <p className="leading-relaxed">{about.intro}</p>
+          <p className="leading-relaxed text-zinc-500">
+            {section.description}
+          </p>
 
-            <p className="leading-relaxed">{about.story}</p>
-
-            <p className="leading-relaxed">{about.motivation}</p>
-
-            <p className="leading-relaxed">{about.differentiator}</p>
+          <div className="grid grid-cols-2 gap-12">
+            {section.stats?.map((item, index) => (
+              <div key={index}>
+                <div className="mb-1 text-4xl font-black">{item.value}</div>
+                <div className="text-xs font-bold uppercase tracking-widest text-zinc-400">
+                  {item.label}
+                </div>
+              </div>
+            ))}
           </div>
 
-          {/* RIGHT - STATS */}
-          <div className="grid grid-cols-2 gap-6">
-            <div className="rounded-[2rem] bg-zinc-100 p-8">
-              <h3 className="mb-2 text-3xl font-black text-[#ff7a30]">
-                {about.stats.projects}
-              </h3>
-              <p className="text-sm text-zinc-500">Projects</p>
-            </div>
-
-            <div className="rounded-[2rem] bg-zinc-100 p-8">
-              <h3 className="mb-2 text-3xl font-black text-[#ff7a30]">
-                {about.stats.experience}
-              </h3>
-              <p className="text-sm text-zinc-500">Experience</p>
-            </div>
-
-            <div className="rounded-[2rem] bg-zinc-100 p-8">
-              <h3 className="mb-2 text-3xl font-black text-[#ff7a30]">
-                {about.stats.certifications || "—"}
-              </h3>
-              <p className="text-sm text-zinc-500">Certifications</p>
-            </div>
-
-            <div className="rounded-[2rem] bg-zinc-100 p-8">
-              <h3 className="mb-2 text-3xl font-black text-[#ff7a30]">
-                {about.stats.achievements || "—"}
-              </h3>
-              <p className="text-sm text-zinc-500">Achievements</p>
-            </div>
-          </div>
+          <Link
+            to={section.buttonLink}
+            className="inline-block rounded-full bg-zinc-200 px-10 py-4 font-bold text-zinc-800 transition-colors hover:bg-zinc-300"
+          >
+            {section.buttonText}
+          </Link>
         </div>
       </div>
     </section>

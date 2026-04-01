@@ -1,19 +1,13 @@
-import { homeData } from "../../data/homeData";
+import { contactData } from "../../data/contactData";
 
 function ContactInfo() {
-  const { contact } = homeData;
-
-  const items = [
-    { title: "Email", value: contact.email },
-    { title: "Phone", value: contact.phone },
-    { title: "Location", value: contact.location },
-  ];
+  const { contactInfo } = contactData;
 
   return (
     <section className="px-6 pb-16 md:px-8">
       <div className="mx-auto max-w-6xl">
         <div className="grid gap-6 md:grid-cols-3">
-          {items.map((item) => (
+          {contactInfo.items.map((item) => (
             <div
               key={item.title}
               className="rounded-[2rem] bg-zinc-100 p-8 text-center"
