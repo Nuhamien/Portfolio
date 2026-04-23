@@ -1,13 +1,7 @@
-import { homeData } from "../../data/homeData";
-import { servicesData } from "../../data/servicesData";
 import ServiceCard from "../cards/ServiceCard";
 
-function ServicesPreview() {
-  const { servicesPreview } = homeData;
-
-  const previewServices = servicesPreview.serviceIds
-    .map((id) => servicesData.servicesList.find((service) => service.id === id))
-    .filter(Boolean);
+function ServicesPreview({ data, services = [] }) {
+  if (!data) return null;
 
   return (
     <section className="relative mx-4 overflow-hidden rounded-[3rem] bg-zinc-100 py-24">
@@ -15,29 +9,29 @@ function ServicesPreview() {
         <div className="mb-16 flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
           <div>
             <p className="mb-4 text-sm font-bold uppercase tracking-[0.2em] text-[#ff7a30]">
-              {servicesPreview.badge}
+              {data.badge}
             </p>
 
             <h2 className="font-headline flex items-center gap-2 text-4xl font-extrabold text-[#1a1a1a] md:text-5xl">
-              {servicesPreview.title.main}
+              {data.title?.main}
               <span className="text-[#ff7a30]">
-                {servicesPreview.title.highlight}
+                {data.title?.highlight}
               </span>
               <span className="text-[#ff7a30]">
-                {servicesPreview.title.suffix}
+                {data.title?.suffix}
               </span>
             </h2>
           </div>
 
           <p className="max-w-md text-sm leading-relaxed text-zinc-500">
-            {servicesPreview.description}
+            {data.description}
           </p>
         </div>
 
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 xl:grid-cols-4">
-          {previewServices.map((service, index) => (
+          {services.map((service, index) => (
             <ServiceCard
-              key={service.id}
+              key={service.id || index}
               title={service.title}
               description={service.description}
               image={service.image || ""}

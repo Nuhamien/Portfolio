@@ -5,7 +5,7 @@ function TestimonialCard({ name, role, rating, image, text }) {
         {image ? (
           <img
             src={image}
-            alt={name}
+            alt={name || "User"}
             className="h-14 w-14 rounded-full border-2 border-[#ff7a30] object-cover"
           />
         ) : (
@@ -15,21 +15,30 @@ function TestimonialCard({ name, role, rating, image, text }) {
         )}
 
         <div>
-          <h4 className="text-lg font-bold text-white">{name}</h4>
-          <p className="text-xs text-zinc-500">{role}</p>
+          <h4 className="text-lg font-bold text-white">
+            {name || "Anonymous"}
+          </h4>
+          <p className="text-xs text-zinc-500">
+            {role || ""}
+          </p>
         </div>
       </div>
 
       <div className="mb-6 flex gap-1 text-orange-500">
-        <span>★</span>
-        <span>★</span>
-        <span>★</span>
-        <span>★</span>
-        <span>★</span>
-        {rating && <span className="ml-2 text-sm font-bold text-white">{rating}</span>}
+        {[...Array(5)].map((_, index) => (
+          <span key={index}>★</span>
+        ))}
+
+        {rating ? (
+          <span className="ml-2 text-sm font-bold text-white">
+            {rating}
+          </span>
+        ) : null}
       </div>
 
-      <p className="leading-relaxed italic text-zinc-400">{text}</p>
+      <p className="leading-relaxed italic text-zinc-400">
+        {text || ""}
+      </p>
     </div>
   );
 }

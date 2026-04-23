@@ -1,12 +1,75 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { footerData } from "../../data/site/footerData";
-import logo from "../../assets/images/logo.png";
-
+import { getSiteSettings } from "../services/cms/siteCms/getSiteSettings";
+import { mapSiteSettingsResponse } from "../../lib/mappers/mapSiteSettingsResponse";
+import { FaGithub, FaLinkedin, FaTelegramPlane } from "react-icons/fa";
 function Footer() {
-  const { ctaSection, brand, navLinks, socialLinks, contact, bottomBar } =
-    footerData;
+  const [siteSettings, setSiteSettings] = useState(null);
 
-  return (
+  useEffect(() => {
+    async function loadSiteSettings() {
+      try {
+        const response = await getSiteSettings();
+        const mappedData = mapSiteSettingsResponse(response);
+        setSiteSettings(mappedData);
+      } catch (error) {
+        console.error("Failed to load footer settings:", error);
+      }
+    }
+
+    loadSiteSettings();
+  }, []);
+
+  const brandName = siteSettings?.brandName || "Nuhamien";
+  const brandLogo = siteSettings?.brandLogo || "";
+  const footerDescription = siteSettings?.footerDescription || "";
+  const email = siteSettings?.email || "";
+  const phone = siteSettings?.phone || "";
+  const location = siteSettings?.location || "";
+  const navLinks = Array.isArray(siteSettings?.footerQuickLinks)
+    ? siteSettings.footerQuickLinks.map((link) => ({
+        name: link.name || link.label || "",
+        path: link.path || "/",
+      }))
+    : [];
+  const socialLinks = Array.isArray(siteSettings?.socialLinks)
+    ? siteSettings.socialLinks.map((social) => ({
+        name: social.label || "",
+        url: social.url || social.path || "#",
+        shortLabel: social.shortLabel || social.name?.charAt(0) || "?",
+      }))
+    : [];
+
+    const contact = {
+    phone: siteSettings?.phone || "",
+    email: siteSettings?.email || "",
+    location: siteSettings?.location || "",
+  };
+
+   const ctaSection = siteSettings?.footerCtaSection ||{
+    title: "",
+    highlight: "",
+    suffix: "",
+    button: {
+      label: "",
+      path: "/contact",
+      icon: "→",
+    },
+  };
+
+  const bottomBar = siteSettings?.footerBottomBar ||  {
+    copyright: "",
+    links: [],
+  };
+
+  const brand = {
+    name: brandName,
+    path: "/",
+    description: footerDescription,
+  };
+
+
+   return (
     <>
       <section className="mx-4 rounded-t-[3rem] bg-[#121212] py-16">
         <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-8 px-6 md:flex-row md:px-8">
@@ -29,11 +92,14 @@ function Footer() {
         <div className="mx-auto mb-20 grid max-w-6xl grid-cols-1 gap-16 px-6 md:grid-cols-4 md:px-8">
           <div className="space-y-8 md:col-span-2">
             <Link to={brand.path} className="flex items-center gap-3">
-              <img
-                src={logo}
-                alt={brand.name}
-                className="h-10 w-10 object-contain"
-              />
+              {brandLogo ? (
+                <img
+                  src={brandLogo}
+                  alt={brand.name}
+                  className="h-10 w-10 object-contain"
+                />
+              ) : null}
+
               <span className="text-lg font-bold tracking-tight text-white">
                 {brand.name}
               </span>
@@ -44,16 +110,18 @@ function Footer() {
             </p>
 
             <div className="flex gap-4">
-              {socialLinks.map((social) => (
+              {socialLinks.map((social, index) => (
                 <a
-                  key={social.name}
+                  key={social.name || index}
                   href={social.url}
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={social.name}
                   className="flex h-10 w-10 items-center justify-center rounded-lg bg-zinc-800 text-sm font-bold text-white transition-colors hover:bg-[#ff7a30]"
                 >
-                  {social.shortLabel}
+                {social.name === "LinkedIn" && <FaLinkedin size={16} />}
+                {social.name === "GitHub" && <FaGithub size={16} />}
+                {social.name === "Telegram" && <FaTelegramPlane size={16} />}
                 </a>
               ))}
             </div>
@@ -63,8 +131,8 @@ function Footer() {
             <h4 className="mb-8 font-bold text-white">Navigation</h4>
 
             <ul className="space-y-4 text-sm font-medium text-zinc-500">
-              {navLinks.map((link) => (
-                <li key={link.name}>
+              {navLinks.map((link, index) => (
+                <li key={link.name || index}>
                   <Link
                     to={link.path}
                     className="transition-colors hover:text-[#ff7a30]"
@@ -113,9 +181,9 @@ function Footer() {
           <p>{bottomBar.copyright}</p>
 
           <div className="flex gap-8">
-            {bottomBar.links.map((link) => (
+            {bottomBar.links.map((link, index) => (
               <a
-                key={link.name}
+                key={link.name || index}
                 href={link.path}
                 className="transition-colors hover:text-white"
               >

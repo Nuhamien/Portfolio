@@ -1,27 +1,18 @@
-import { homeData } from "../../data/homeData";
-import { servicesData } from "../../data/servicesData";
-
-function ExperienceTimeline() {
-  const { processPreview } = homeData;
-
-  const processSteps = processPreview.stepIds
-    .map((id) =>
-      servicesData.processTimeline.steps.find((step) => step.id === id)
-    )
-    .filter(Boolean);
+function ExperienceTimeline({ data, steps = [] }) {
+  if (!data) return null;
 
   return (
     <section className="px-6 py-28 md:px-8">
       <div className="mx-auto max-w-6xl">
         <div className="mb-20 max-w-2xl">
           <p className="mb-4 text-sm font-bold uppercase tracking-[0.2em] text-[#ff7a30]">
-            {processPreview.badge}
+            {data.badge}
           </p>
 
           <h2 className="font-headline text-4xl font-extrabold leading-tight md:text-5xl">
-            {processPreview.title.main}{" "}
+            {data.title?.main}{" "}
             <span className="text-[#ff7a30]">
-              {processPreview.title.highlight}
+              {data.title?.highlight}
             </span>
           </h2>
         </div>
@@ -30,9 +21,9 @@ function ExperienceTimeline() {
           <div className="absolute left-6 top-0 hidden h-full w-[2px] bg-zinc-200 md:block"></div>
 
           <div className="space-y-10">
-            {processSteps.map((step, index) => (
+            {steps.map((step, index) => (
               <div
-                key={step.id}
+                key={step.id || index}
                 className="grid grid-cols-1 gap-6 md:grid-cols-[auto_1fr] md:gap-8"
               >
                 <div className="relative z-10 hidden md:flex">
